@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package hero;
+
+service HeroService {
+    rpc unary (Payload) returns (Output) {}
+    rpc single (Payload) returns (stream Output) {}
+    rpc multiple (stream Payload) returns (stream Output) {}
+}
+
+message Payload {
+    int32 id = 1;
+    string name = 2;
+}
+
+message Output {
+    int32 id = 1;
+    string status = 2;
+}
